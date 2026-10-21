@@ -1,0 +1,68 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #aef3f7;
+    height: 100vh;
+}
+
+main {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 2rem;
+    height: 100vh;
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+/* POLA FORMULARZ */
+input {
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    font: inherit;
+    border: 1px solid #b9c5c7;
+    border-radius: 8px;
+}
+
+input:focus {
+    border-color: #167b83;
+    outline: 3px solid rgb(22 123 131 / 20%);
+}
+
+textarea {
+    width: 100%;
+    padding: 0.75rem;
+    box-sizing: border-box;
+    font: inherit;
+    border: 1px solid #b9c5c7;
+    border-radius: 8px;
+}
+
+
+/* PRZYCISKI */
+
+button {
+    margin-top: 0.75rem;
+    padding: 0.8rem 1rem;
+    color: #ffffff;
+    font: inherit;
+    font-weight: 700;
+    background-color: #167b83;
+    border: 0;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #105f65;
+}
+
+button:focus-visible {
+    outline: 3px solid rgb(22 123 131 / 35%);
+    outline-offset: 2px;
+}
