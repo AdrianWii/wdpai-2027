@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use App\Controller\AboutController;
 use App\Controller\DefaultController;
 use App\Controller\ProjectController;
 use App\Controller\SecurityController;
@@ -14,7 +15,11 @@ $routing = new Routing();
 $routing->get('/projects', ProjectController::class, 'index');
 $routing->get('/projects/{id}', ProjectController::class, 'show');
 $routing->get('/', DefaultController::class, 'index');
+$routing->get('/about', AboutController::class, 'index');
 $routing->get('/login', SecurityController::class, 'login');
+$routing->post('/login', SecurityController::class, 'login');
+$routing->get('/register', SecurityController::class, 'register');
+$routing->post('/register', SecurityController::class, 'register');
 
 $routeFound = $routing->dispatch(
     $_SERVER['REQUEST_METHOD'],

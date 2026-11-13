@@ -1,0 +1,6 @@
+[mcp_servers.trello]
+url = "https://mcp.trello.com/v1"
+enabled = true
+required = false
+default_tools_approval_mode = "writes"
+

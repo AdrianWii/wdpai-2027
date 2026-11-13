@@ -83,7 +83,7 @@ final class Routing
             if (!$controller instanceof AppController) {
                 throw new \RuntimeException('Invalid controller');
             }
-
+            
             $controller->{$route['action']}(...$parameters);
 
             return true;

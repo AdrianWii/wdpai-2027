@@ -5,9 +5,9 @@
     width: min(100%, 360px);
     padding: 2rem;
     box-sizing: border-box;
-    background-color: #ffffff;
+    background-color: var(--color-surface);
     border-radius: 16px;
-    box-shadow: 0 8px 24px rgb(0 0 0 / 12%);
+    box-shadow: var(--shadow-soft);
 }
 
 #login h1 {

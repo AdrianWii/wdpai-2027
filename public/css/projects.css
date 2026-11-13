@@ -5,21 +5,6 @@
     flex-direction: column;
 }
 
-/* Nawigacja */
-.dashboard__nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.5rem 2rem;
-    background-color: #1e3a8a;
-}
-
-.dashboard__nav a {
-    color: white;
-    font-weight: bold;
-    text-decoration: none;
-}
-
 /* Sidebar i main ustawione obok siebie */
 .dashboard__content {
     flex: 1;
@@ -30,8 +15,9 @@
     width: 220px;
     padding: 2rem;
     box-sizing: border-box;
-    background-color: #6d28d9;
-    color: white;
+    background-color: var(--color-surface);
+    color: var(--color-text);
+    border-right: 1px solid var(--color-border);
 }
 
 .dashboard__menu {
@@ -42,13 +28,13 @@
 .dashboard__menu a {
     display: block;
     padding: 0.75rem;
-    color: white;
+    color: var(--color-text);
     text-decoration: none;
 }
 
 .dashboard__menu a:hover,
 .dashboard__menu .is-active {
-    background-color: #8b5cf6;
+    background-color: var(--color-surface-muted);
 }
 
 .dashboard__main {
@@ -58,8 +44,8 @@
     height: auto;
     margin: 0;
     padding: 2rem;
-    background-color: #dcfce7;
-    color: #14532d;
+    background-color: var(--color-bg);
+    color: var(--color-text);
 }
 
 /* Na małym ekranie sidebar przechodzi nad main */

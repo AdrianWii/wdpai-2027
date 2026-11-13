@@ -1,12 +1,8 @@
-<?php $stylesheets = ['/css/projects.css']; ?>
+<?php $stylesheets = ['/css/nav.css', '/css/projects.css']; ?>
+
+<?php include __DIR__ . '/components/nav.html.php'; ?>
 
 <div class="dashboard">
-    <nav class="dashboard__nav" aria-label="Główna nawigacja">
-        <a class="dashboard__brand" href="/">Project Dashboard</a>
-
-        <a class="dashboard__logout" href="/login">Wyloguj się</a>
-    </nav>
-
     <div class="dashboard__content">
         <aside class="dashboard__sidebar">
             <h2>Menu</h2>

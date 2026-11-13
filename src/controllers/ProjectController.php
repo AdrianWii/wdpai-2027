@@ -8,6 +8,7 @@ final class ProjectController extends AppController
 {
     public function index(): void
     {
+        
         $this->render('projects', [
             'pageTitle' => 'Projekty',
         ]);

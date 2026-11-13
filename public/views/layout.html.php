@@ -12,8 +12,19 @@
         <link rel="stylesheet" href="<?= htmlspecialchars($stylesheet, ENT_QUOTES, 'UTF-8') ?>">
     <?php endforeach; ?>
     <script src="https://kit.fontawesome.com/8fd9367667.js" crossorigin="anonymous"></script>
+    <script src="/js/theme.js" defer></script>
 </head>
 <body>
+    <button
+        class="theme-toggle"
+        type="button"
+        aria-label="Włącz ciemny motyw"
+        aria-pressed="false"
+        title="Zmień motyw"
+    >
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+    </button>
+
     <?= $content ?>
 </body>
 </html>
