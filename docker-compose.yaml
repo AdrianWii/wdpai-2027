@@ -17,11 +17,23 @@ services:
       context: .
       dockerfile: docker/db/Dockerfile
     ports:
-      - 5433:5432
+      - "${DB_HOST_PORT:-5433}:5432"
+    environment:
+      POSTGRES_DB: ${DB_NAME:-db}
+      POSTGRES_USER: ${DB_USER:-docker}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-docker}
     networks:
       - pg-network
     volumes:
-      - ./docker/db:/docker-entrypoint-initdb.d
+      - pg-data:/var/lib/postgresql/data
+      - ./docker/db/init:/docker-entrypoint-initdb.d:ro
+    healthcheck:
+      # During init the temporary PostgreSQL server only listens on a Unix socket.
+      # TCP becomes available after all init scripts finish and the final server starts.
+      test: ["CMD-SHELL", "pg_isready -h 127.0.0.1 -U ${DB_USER:-docker} -d ${DB_NAME:-db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
   php:
     build:
@@ -29,6 +41,15 @@ services:
       dockerfile: docker/php/Dockerfile
     volumes:
       - .:/app
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: ${DB_NAME:-db}
+      DB_USER: ${DB_USER:-docker}
+      DB_PASSWORD: ${DB_PASSWORD:-docker}
+    depends_on:
+      db:
+        condition: service_healthy
     networks:
       - app-network
       - pg-network

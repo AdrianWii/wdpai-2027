@@ -5,9 +5,15 @@
   justify-content: center;
   gap: 1.5rem;
   box-sizing: border-box;
-  min-height: 100vh;
+  min-height: calc(100vh - 96px);
   height: auto;
   text-align: center;
+}
+
+@media (max-width: 800px) {
+  .about {
+    min-height: calc(100vh - 286px);
+  }
 }
 
 .about__title,

@@ -31,15 +31,16 @@ function syncThemeToggle() {
   }
 
   const isDark = getCurrentTheme() === "dark";
-  const themeIcon = themeToggle.querySelector("i");
+  const themeIcon = themeToggle.querySelector(".theme-toggle__icon");
 
   themeToggle.setAttribute("aria-pressed", String(isDark));
   themeToggle.setAttribute(
     "aria-label",
     isDark ? "Włącz jasny motyw" : "Włącz ciemny motyw",
   );
-  themeIcon?.classList.toggle("fa-sun", isDark);
-  themeIcon?.classList.toggle("fa-moon", !isDark);
+  if (themeIcon) {
+    themeIcon.textContent = isDark ? "☀" : "☾";
+  }
 }
 
 function setTheme(theme, remember = true) {

@@ -18,8 +18,9 @@ $routing->get('/', DefaultController::class, 'index');
 $routing->get('/about', AboutController::class, 'index');
 $routing->get('/login', SecurityController::class, 'login');
 $routing->post('/login', SecurityController::class, 'login');
-$routing->get('/register', SecurityController::class, 'register');
+$routing->get('/logout', SecurityController::class, 'logout');
 $routing->post('/register', SecurityController::class, 'register');
+$routing->get('/register', SecurityController::class, 'register');
 
 $routeFound = $routing->dispatch(
     $_SERVER['REQUEST_METHOD'],

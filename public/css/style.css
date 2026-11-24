@@ -130,3 +130,8 @@ a {
 .theme-toggle:hover {
     background: var(--color-surface-muted);
 }
+
+.theme-toggle__icon {
+    font-size: 1.35rem;
+    line-height: 1;
+}

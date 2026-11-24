@@ -14,8 +14,9 @@ final class SecurityController extends AppController
 
             // musimy sprawdzic czy email jest w db
             // musimy porwnac hashe hasel
+            // utworzenie sesji uzytkownik
 
-            var_dump($email, $password);
+            var_dump($email, $password, $_POST);
             $this->render('projects', [
                 'pageTitle' => 'Projects',
             ]);
@@ -27,27 +28,41 @@ final class SecurityController extends AppController
         ]);
     }
 
-    public function register(): void {
+    public function register(): void
+    {
+        if($this->isPost()){
 
-        if($this->isPost()) {
-            $name = $_POST['name'] ?? '';
-            $email = $_POST['myemail'] ?? '';
-            $password = $_POST['password'] ?? '';   
+            $email = $_POST['email'] ?? '';
+            $password = $_POST['password'] ?? '';
+            $confirmPassword = $_POST['confirm_password'] ?? '';
 
-            // insert do db
+            if($password !== $confirmPassword){
+                // hasla nie sa takie same
+                var_dump('Hasła nie są takie same');
+                return;
+            }
 
-            $this->render('login', [
-                'pageTitle' => 'Login',
+            // todo register user in database
+
+            $this->render("projects", [
+                'pageTitle' => 'Projects',
             ]);
-            return;
         }
-        
-        if($this->isGet()) {
-            var_dump("🍕 HELLO, GET");
-            $this->render('register', [
-                'pageTitle' => 'Rejestracja',
-            ]);
-            return;
+
+        $this->render("register", [
+            'pageTitle' => 'Register',
+        ]);
+    }
+
+    public function logout(): void
+    {
+        if (session_status() !== PHP_SESSION_ACTIVE) {
+            session_start();
         }
+
+        $_SESSION = [];
+        session_destroy();
+
+        header('Location: /login', true, 302);
     }
 }
