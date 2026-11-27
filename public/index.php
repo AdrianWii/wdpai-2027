@@ -6,6 +6,7 @@ use App\Controller\AboutController;
 use App\Controller\DefaultController;
 use App\Controller\ProjectController;
 use App\Controller\SecurityController;
+use App\Controller\DashboardController;
 use App\Routing;
 
 require_once dirname(__DIR__) . '/vendor/autoload.php';
@@ -13,8 +14,10 @@ require_once dirname(__DIR__) . '/vendor/autoload.php';
 $routing = new Routing();
 
 $routing->get('/projects', ProjectController::class, 'index');
+$routing->get('/project', ProjectController::class, 'addProject');
+$routing->post('/project', ProjectController::class, 'addProject');
 $routing->get('/projects/{id}', ProjectController::class, 'show');
-$routing->get('/', DefaultController::class, 'index');
+$routing->get('/', DashboardController::class, 'dashboard');
 $routing->get('/about', AboutController::class, 'index');
 $routing->get('/login', SecurityController::class, 'login');
 $routing->post('/login', SecurityController::class, 'login');

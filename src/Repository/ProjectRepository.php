@@ -29,6 +29,26 @@ final class ProjectRepository extends Repository
         return $statement->fetchAll();
     }
 
+    public function insert(
+        string $name,
+        string $description,
+        string $status,
+        int $userId,
+    ): int {
+        $statement = $this->connection->prepare(
+            'INSERT INTO projects (user_id, name, description, status)
+            VALUES (:user_id, :name, :description, :status)
+            RETURNING id',
+        );
+        $statement->bindValue(':user_id', $userId, PDO::PARAM_INT);
+        $statement->bindValue(':name', $name, PDO::PARAM_STR);
+        $statement->bindValue(':description', $description, PDO::PARAM_STR);
+        $statement->bindValue(':status', $status, PDO::PARAM_STR);
+        $statement->execute();
+
+        return (int) $statement->fetchColumn();
+    }
+
     public function findByIdWithOwner(int $id): ?array
     {
         $statement = $this->connection->prepare(

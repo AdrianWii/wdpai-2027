@@ -15,11 +15,17 @@ $activeNavigation = 'projects';
         </header>
 
         <main class="dashboard__main">
-            <header class="projects-header">
-                <p class="projects-header__eyebrow">Dane z PostgreSQL</p>
-                <h1>Projekty</h1>
-                <p>Każdy projekt jest połączony z właścicielem przez klucz obcy <code>projects.user_id</code>.</p>
-            </header>
+            <div class="projects-toolbar">
+                <header class="projects-header">
+                    <p class="projects-header__eyebrow">Dane z PostgreSQL</p>
+                    <h1>Projekty</h1>
+                    <p>Każdy projekt jest połączony z właścicielem przez klucz obcy <code>projects.user_id</code>.</p>
+                </header>
+                <a class="projects-header__action" href="/project">
+                    <span class="projects-header__action-icon" aria-hidden="true">+</span>
+                    <span>Dodaj projekt</span>
+                </a>
+            </div>
 
             <?php if ($projects === []): ?>
                 <p class="projects-empty">Brak projektów do wyświetlenia.</p>

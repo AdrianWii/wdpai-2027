@@ -8,19 +8,16 @@ final class SecurityController extends AppController
 {
     public function login(): void
     {
-        if ($this->isPost()) {
+        if($this->isPost()) {
             $email = $_POST['email'] ?? '';
             $password = $_POST['password'] ?? '';
 
-            // musimy sprawdzic czy email jest w db
-            // musimy porwnac hashe hasel
-            // utworzenie sesji uzytkownik
+            // todo validate user credentials
 
-            var_dump($email, $password, $_POST);
+            var_dump($email, $password);
             $this->render('projects', [
                 'pageTitle' => 'Projects',
             ]);
-            return;
         }
 
         $this->render('login', [
@@ -28,6 +25,7 @@ final class SecurityController extends AppController
         ]);
     }
 
+    
     public function register(): void
     {
         if($this->isPost()){
